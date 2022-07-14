@@ -71,7 +71,7 @@ const Sidebar = (props) => {
         </Typography>
       </Box>
       <Box>
-        <List sx={{ width: "20%" }}>
+        <List sx={{ width: "100%" }}>
           {users.map((user, index) => (
             <ListItem key={index}>
               <ListItemAvatar>
@@ -80,7 +80,17 @@ const Sidebar = (props) => {
                 </Avatar>
               </ListItemAvatar>
               {expanded && (
-                <ListItemText primary={user.username} sx={{ color: "white" }} />
+                <ListItemText
+                  primary={user.username}
+                  sx={{ color: "white" }}
+                  primaryTypographyProps={{
+                    style: {
+                      whiteSpace: "normal",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    },
+                  }}
+                />
               )}
             </ListItem>
           ))}
