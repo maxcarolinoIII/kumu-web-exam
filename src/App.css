@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "Kumu";
+  src: url("fonts/CircularXXTT-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Kumu";
+  src: url("fonts/CircularXXTT-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}

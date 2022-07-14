@@ -7,16 +7,13 @@ const Header = (props) => {
     <Box>
       <AppBar position="static">
         <Toolbar>
-          <Box
-            sx={{
-              width: "20%",
-              display: "flex",
-            }}
-          >
+          <Box width={"20%"} display={"flex"}>
             <img src={logo} alt="Kumu Logo" height={50} />
           </Box>
           <Link href="#" underline="none" color="white">
-            <Typography fontWeight={"fontWeightBold"}>Streams</Typography>
+            <Typography fontWeight={"fontWeightBold"} fontSize={"18px"}>
+              Streams
+            </Typography>
           </Link>
         </Toolbar>
       </AppBar>
