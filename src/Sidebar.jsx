@@ -13,33 +13,6 @@ import {
 import { ChevronRight } from "@mui/icons-material";
 
 const Sidebar = (props) => {
-  const users = [
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-    {
-      username: "Max",
-      avatar: "https://i.pravatar.cc/50?img=68",
-    },
-  ];
-
   return (
     <Box
       sx={{
@@ -75,7 +48,7 @@ const Sidebar = (props) => {
       </Box>
       <Box>
         <List sx={{ width: "100%" }}>
-          {users.map((user, index) => (
+          {props.topUsers.map((user, index) => (
             <ListItem key={index}>
               <ListItemAvatar>
                 <Avatar>

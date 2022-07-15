@@ -20,6 +20,7 @@ const theme = createTheme({
 const App = () => {
   const [expanded, setExpanded] = useState(true);
   const [streams, setStreams] = useState([]);
+  const [topUsers, setTopUsers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -43,6 +44,13 @@ const App = () => {
           viewers: live.audience_count,
         }))
       );
+
+      setTopUsers(
+        [...data.data.lives.slice(0, 6)].map((live) => ({
+          username: live.username,
+          avatar: live.avatar,
+        }))
+      );
     }
 
     fetchData();
@@ -63,6 +71,7 @@ const App = () => {
           <Sidebar
             expanded={expanded}
             setExpanded={(expanded) => setExpanded(expanded)}
+            topUsers={topUsers}
           />
           <StreamList expanded={expanded} streams={streams} />
         </Box>
