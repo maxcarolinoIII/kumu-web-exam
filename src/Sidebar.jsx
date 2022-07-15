@@ -65,7 +65,12 @@ const Sidebar = (props) => {
         }}
       >
         <Typography
-          sx={{ color: "#FB2961", fontSize: "20px", fontWeight: "bold" }}
+          sx={{
+            color: "#FB2961",
+            fontSize: "20px",
+            fontWeight: "bold",
+            paddingLeft: "16px",
+          }}
         >
           Users
         </Typography>
