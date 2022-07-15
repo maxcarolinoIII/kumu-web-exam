@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import React from "react";
 
 const StreamList = (props) => {
@@ -87,6 +88,19 @@ const StreamList = (props) => {
       color: "white",
       padding: "4px",
     },
+    badge: {
+      position: "absolute",
+      top: "10px",
+      right: "8px",
+      borderRadius: "999px",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      color: "white",
+      display: "flex",
+      width: "fit-content",
+      padding: "4px 10px",
+      gap: "12px",
+      alignItems: "center",
+    },
   };
 
   return (
@@ -120,6 +134,10 @@ const StreamList = (props) => {
                 image={stream.image}
                 alt="stream image"
               />
+              <div style={styles.badge}>
+                <VisibilityIcon sx={{ width: "18px", height: "18px" }} />
+                {stream.viewers}
+              </div>
               <div style={styles.overlay}>
                 <Typography
                   variant="h6"
