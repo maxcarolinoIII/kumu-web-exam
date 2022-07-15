@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Header from "./Header";
@@ -19,6 +19,34 @@ const theme = createTheme({
 
 const App = () => {
   const [expanded, setExpanded] = useState(true);
+  const [streams, setStreams] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const url = new URL("https://liveapi.kumu.live/site/get-browse-live");
+      url.search = new URLSearchParams({
+        mode: "all",
+        page: 1,
+        prev_ids: "",
+      }).toString();
+
+      const result = await fetch(url);
+      const data = await result.json();
+
+      setStreams(
+        [...data.data.lives].map((live) => ({
+          title: live.title,
+          username: `@${live.username}`,
+          avatar: live.avatar,
+          image: live.cover_image,
+          channelId: live.channel_id,
+          viewers: live.audience_count,
+        }))
+      );
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,7 +64,7 @@ const App = () => {
             expanded={expanded}
             setExpanded={(expanded) => setExpanded(expanded)}
           />
-          <StreamList expanded={expanded} />
+          <StreamList expanded={expanded} streams={streams} />
         </Box>
       </div>
     </ThemeProvider>
