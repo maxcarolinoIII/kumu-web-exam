@@ -101,7 +101,7 @@ const StreamList = (props) => {
       <Link
         href="#"
         color="#FB2961"
-        sx={{ marginTop: "24px", marginBottom: "24px" }}
+        sx={{ marginTop: "24px" }}
         onClick={() => props.onShowMore()}
       >
         <Typography

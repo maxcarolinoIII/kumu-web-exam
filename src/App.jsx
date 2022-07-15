@@ -23,13 +23,14 @@ const App = () => {
   const [rows, setRows] = useState(2);
   const [streams, setStreams] = useState([]);
   const [topUsers, setTopUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
       const url = new URL("https://liveapi.kumu.live/site/get-browse-live");
       url.search = new URLSearchParams({
         mode: "all",
-        page: 1,
+        page,
         prev_ids: "",
       }).toString();
 
@@ -57,6 +58,38 @@ const App = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    async function fetchMoreData() {
+      const url = new URL("https://liveapi.kumu.live/site/get-browse-live");
+      url.search = new URLSearchParams({
+        mode: "all",
+        page: page + 1,
+        prev_ids: "",
+      }).toString();
+
+      const result = await fetch(url);
+      const data = await result.json();
+
+      setStreams([
+        ...streams,
+        ...[...data.data.lives].map((live) => ({
+          title: live.title,
+          username: `@${live.username}`,
+          avatar: live.avatar,
+          image: live.cover_image,
+          channelId: live.channel_id,
+          viewers: live.audience_count,
+        })),
+      ]);
+
+      setPage(page + 1);
+    }
+
+    if (streams.length !== 0 && perRow * rows > streams.length) {
+      fetchMoreData();
+    }
+  }, [perRow, rows]);
 
   return (
     <ThemeProvider theme={theme}>
