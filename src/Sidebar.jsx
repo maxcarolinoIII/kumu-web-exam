@@ -1,6 +1,5 @@
 import { Box } from "@mui/system";
 import React from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import {
   Avatar,
   Button,
@@ -10,7 +9,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { ChevronRight } from "@mui/icons-material";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Sidebar = (props) => {
   return (
@@ -22,11 +21,13 @@ const Sidebar = (props) => {
     >
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button onClick={() => props.setExpanded(props.expanded)}>
-          {props.expanded ? (
-            <ChevronLeftIcon sx={{ color: "white", fontSize: "32px" }} />
-          ) : (
-            <ChevronRight sx={{ color: "white", fontSize: "32px" }} />
-          )}
+          <LoginIcon
+            sx={{
+              color: "#4AEFE9",
+              fontSize: "32px",
+              transform: props.expanded ? "rotate(180deg)" : "",
+            }}
+          />
         </Button>
       </Box>
       <Box
