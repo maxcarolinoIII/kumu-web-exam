@@ -159,7 +159,7 @@ const StreamList = (props) => {
           </Card>
         ))}
       </Masonry>
-      <Link href="#" color="#FB2961">
+      <Link href="#" color="#FB2961" sx={{ marginTop: '24px' }}>
         <Typography
           fontWeight={"fontWeightBold"}
           fontSize={"18px"}
