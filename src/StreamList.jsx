@@ -63,42 +63,45 @@ const StreamList = (props) => {
         Streams
       </Typography>
       <Masonry columns={props.expanded ? 5 : 6} spacing={2}>
-        {props.streams
-          .slice(0, props.expanded ? 10 : 12)
-          .map((stream, index) => (
-            <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
-              <CardActionArea>
-                <CardMedia
-                  component={"img"}
-                  height={"250"}
-                  image={stream.image}
-                  alt="stream image"
-                />
-                <div style={styles.badge}>
-                  <VisibilityIcon sx={{ width: "18px", height: "18px" }} />
-                  {stream.viewers}
-                </div>
-                <div style={styles.overlay}>
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      textAlign: "left",
-                    }}
-                  >
-                    {stream.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ textAlign: "left" }}>
-                    {stream.username}
-                  </Typography>
-                </div>
-              </CardActionArea>
-            </Card>
-          ))}
+        {props.streams.map((stream, index) => (
+          <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
+            <CardActionArea>
+              <CardMedia
+                component={"img"}
+                height={"250"}
+                image={stream.image}
+                alt="stream image"
+              />
+              <div style={styles.badge}>
+                <VisibilityIcon sx={{ width: "18px", height: "18px" }} />
+                {stream.viewers}
+              </div>
+              <div style={styles.overlay}>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    textAlign: "left",
+                  }}
+                >
+                  {stream.title}
+                </Typography>
+                <Typography variant="body2" sx={{ textAlign: "left" }}>
+                  {stream.username}
+                </Typography>
+              </div>
+            </CardActionArea>
+          </Card>
+        ))}
       </Masonry>
-      <Link href="#" color="#FB2961" sx={{ marginTop: "24px" }}>
+      <Link
+        href="#"
+        color="#FB2961"
+        sx={{ marginTop: "24px" }}
+        onClick={props.onShowMore()}
+      >
         <Typography
           fontWeight={"fontWeightBold"}
           fontSize={"18px"}

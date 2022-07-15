@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import {
   Avatar,
@@ -22,7 +22,7 @@ const Sidebar = (props) => {
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button onClick={() => props.setExpanded(!props.expanded)}>
+        <Button onClick={() => props.setExpanded(props.expanded)}>
           {props.expanded ? (
             <ChevronLeftIcon sx={{ color: "white", fontSize: "32px" }} />
           ) : (

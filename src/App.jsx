@@ -19,6 +19,7 @@ const theme = createTheme({
 
 const App = () => {
   const [expanded, setExpanded] = useState(true);
+  const [displayCount, setDisplayCount] = useState(10);
   const [streams, setStreams] = useState([]);
   const [topUsers, setTopUsers] = useState([]);
 
@@ -70,10 +71,17 @@ const App = () => {
         >
           <Sidebar
             expanded={expanded}
-            setExpanded={(expanded) => setExpanded(expanded)}
+            setExpanded={(expanded) => {
+              setExpanded(!expanded);
+              setDisplayCount(expanded ? 12 : 10);
+            }}
             topUsers={topUsers}
           />
-          <StreamList expanded={expanded} streams={streams} />
+          <StreamList
+            expanded={expanded}
+            streams={streams.slice(0, displayCount)}
+            onShowMore={() => {}}
+          />
         </Box>
       </div>
     </ThemeProvider>
