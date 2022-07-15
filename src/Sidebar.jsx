@@ -13,8 +13,6 @@ import {
 import { ChevronRight } from "@mui/icons-material";
 
 const Sidebar = (props) => {
-  const [expanded, setExpanded] = useState(true);
-
   const users = [
     {
       username: "Max",
@@ -45,14 +43,14 @@ const Sidebar = (props) => {
   return (
     <Box
       sx={{
-        width: expanded ? "15%" : "5%",
+        width: props.expanded ? "15%" : "5%",
         padding: "12px",
         borderRight: "1px solid #808080",
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button onClick={() => setExpanded(!expanded)}>
-          {expanded ? (
+        <Button onClick={() => props.setExpanded(!props.expanded)}>
+          {props.expanded ? (
             <ChevronLeftIcon sx={{ color: "white", fontSize: "32px" }} />
           ) : (
             <ChevronRight sx={{ color: "white", fontSize: "32px" }} />
@@ -84,7 +82,7 @@ const Sidebar = (props) => {
                   <img src={user.avatar} alt="sample user avatar" />
                 </Avatar>
               </ListItemAvatar>
-              {expanded && (
+              {props.expanded && (
                 <ListItemText
                   primary={user.username}
                   sx={{ color: "white" }}

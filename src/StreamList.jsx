@@ -124,7 +124,7 @@ const StreamList = (props) => {
       >
         Streams
       </Typography>
-      <Masonry columns={5} spacing={2}>
+      <Masonry columns={props.expanded ? 5 : 6} spacing={2}>
         {streams.map((stream, index) => (
           <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
             <CardActionArea>

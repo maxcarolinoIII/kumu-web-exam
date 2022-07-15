@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Header from "./Header";
@@ -18,6 +18,8 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [expanded, setExpanded] = useState(true);
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -30,8 +32,11 @@ const App = () => {
             display: "flex",
           }}
         >
-          <Sidebar />
-          <StreamList />
+          <Sidebar
+            expanded={expanded}
+            setExpanded={(expanded) => setExpanded(expanded)}
+          />
+          <StreamList expanded={expanded} />
         </Box>
       </div>
     </ThemeProvider>
