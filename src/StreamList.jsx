@@ -45,11 +45,11 @@ const StreamList = (props) => {
     <Box
       sx={{
         padding: "32px",
-        paddingTop: "56px",
+        paddingTop: { xs: "32px", sm: "56px" },
         flex: "1",
         display: "flex",
         flexDirection: "column",
-        borderLeft: "1px solid #808080",
+        borderLeft: { sm: "1px solid #808080" },
         height: "fit-content",
       }}
     >
@@ -64,7 +64,11 @@ const StreamList = (props) => {
       >
         Streams
       </Typography>
-      <Masonry columns={props.columns} spacing={2}>
+      <Masonry
+        columns={{ xs: 2, sm: props.columns }}
+        spacing={2}
+        sx={{ width: "auto" }}
+      >
         {props.streams.map((stream, index) => (
           <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
             <CardActionArea>
@@ -83,14 +87,20 @@ const StreamList = (props) => {
                   variant="h6"
                   component="div"
                   sx={{
-                    fontSize: "16px",
+                    fontSize: { xs: "13px", sm: "16px" },
                     fontWeight: "bold",
                     textAlign: "left",
                   }}
                 >
                   {stream.title}
                 </Typography>
-                <Typography variant="body2" sx={{ textAlign: "left" }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    textAlign: "left",
+                    fontSize: { xs: "12px", sm: "14px" },
+                  }}
+                >
                   {stream.username}
                 </Typography>
               </div>

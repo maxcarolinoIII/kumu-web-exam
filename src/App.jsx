@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
 import Header from "./Header";
 import { Box } from "@mui/system";
 import Sidebar from "./Sidebar";
@@ -18,8 +18,9 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const [expanded, setExpanded] = useState(true);
-  const [perRow, setPerRow] = useState(5);
+  const [perRow, setPerRow] = useState(isDesktop ? 5 : 2);
   const [rows, setRows] = useState(2);
   const [streams, setStreams] = useState([]);
   const [topUsers, setTopUsers] = useState([]);
@@ -90,6 +91,14 @@ const App = () => {
       fetchMoreData();
     }
   }, [perRow, rows]);
+
+  useEffect(() => {
+    if (isDesktop) {
+      setPerRow(expanded ? 5 : 6);
+    } else {
+      setPerRow(2);
+    }
+  }, [isDesktop]);
 
   return (
     <ThemeProvider theme={theme}>
