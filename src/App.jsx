@@ -19,7 +19,8 @@ const theme = createTheme({
 
 const App = () => {
   const [expanded, setExpanded] = useState(true);
-  const [displayCount, setDisplayCount] = useState(10);
+  const [perRow, setPerRow] = useState(5);
+  const [rows, setRows] = useState(2);
   const [streams, setStreams] = useState([]);
   const [topUsers, setTopUsers] = useState([]);
 
@@ -67,20 +68,24 @@ const App = () => {
             height: "calc(100vh - 64px)",
             borderTop: "1px solid #808080",
             display: "flex",
+            overflow: "scroll",
           }}
         >
           <Sidebar
             expanded={expanded}
             setExpanded={(expanded) => {
               setExpanded(!expanded);
-              setDisplayCount(expanded ? 12 : 10);
+              setPerRow(!expanded ? 5 : 6);
             }}
             topUsers={topUsers}
           />
           <StreamList
             expanded={expanded}
-            streams={streams.slice(0, displayCount)}
-            onShowMore={() => {}}
+            columns={perRow}
+            streams={streams.slice(0, perRow * rows)}
+            onShowMore={() => {
+              setRows(rows + 2);
+            }}
           />
         </Box>
       </div>

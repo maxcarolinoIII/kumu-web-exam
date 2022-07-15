@@ -18,7 +18,6 @@ const Sidebar = (props) => {
       sx={{
         width: props.expanded ? "15%" : "5%",
         padding: "12px",
-        borderRight: "1px solid #808080",
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>

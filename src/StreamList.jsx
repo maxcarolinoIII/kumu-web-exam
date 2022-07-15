@@ -49,6 +49,8 @@ const StreamList = (props) => {
         flex: "1",
         display: "flex",
         flexDirection: "column",
+        borderLeft: "1px solid #808080",
+        height: "fit-content",
       }}
     >
       <Typography
@@ -62,7 +64,7 @@ const StreamList = (props) => {
       >
         Streams
       </Typography>
-      <Masonry columns={props.expanded ? 5 : 6} spacing={2}>
+      <Masonry columns={props.columns} spacing={2}>
         {props.streams.map((stream, index) => (
           <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
             <CardActionArea>
@@ -99,8 +101,8 @@ const StreamList = (props) => {
       <Link
         href="#"
         color="#FB2961"
-        sx={{ marginTop: "24px" }}
-        onClick={props.onShowMore()}
+        sx={{ marginTop: "24px", marginBottom: "24px" }}
+        onClick={() => props.onShowMore()}
       >
         <Typography
           fontWeight={"fontWeightBold"}
