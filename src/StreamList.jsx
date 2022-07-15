@@ -4,6 +4,7 @@ import {
   Card,
   CardActionArea,
   CardMedia,
+  Link,
   Typography,
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -158,6 +159,15 @@ const StreamList = (props) => {
           </Card>
         ))}
       </Masonry>
+      <Link href="#" color="#FB2961">
+        <Typography
+          fontWeight={"fontWeightBold"}
+          fontSize={"18px"}
+          sx={{ color: "#FB2961" }}
+        >
+          Show More
+        </Typography>
+      </Link>
     </Box>
   );
 };
