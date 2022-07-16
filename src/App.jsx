@@ -6,6 +6,7 @@ import { Box } from "@mui/system";
 import Sidebar from "./Sidebar";
 import StreamList from "./StreamList";
 import { Route, Switch } from "react-router-dom";
+import StreamPage from "./StreamPage";
 
 const theme = createTheme({
   palette: {
@@ -123,7 +124,9 @@ const App = () => {
             topUsers={topUsers}
           />
           <Switch>
-            <Route path={"/:channel_id"}>Test</Route>
+            <Route path={"/:channelId"}>
+              <StreamPage />
+            </Route>
             <Route path="/">
               <StreamList
                 expanded={expanded}

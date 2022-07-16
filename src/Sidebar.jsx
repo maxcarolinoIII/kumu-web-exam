@@ -53,7 +53,7 @@ const Sidebar = (props) => {
             <ListItem key={index}>
               <ListItemAvatar>
                 <Avatar>
-                  <img src={user.avatar} alt="sample user avatar" />
+                  <img src={user.avatar} alt="User Avatar" />
                 </Avatar>
               </ListItemAvatar>
               {props.expanded && (
