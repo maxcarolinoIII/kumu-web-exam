@@ -5,6 +5,7 @@ import Header from "./Header";
 import { Box } from "@mui/system";
 import Sidebar from "./Sidebar";
 import StreamList from "./StreamList";
+import { Route, Switch } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -121,14 +122,19 @@ const App = () => {
             }}
             topUsers={topUsers}
           />
-          <StreamList
-            expanded={expanded}
-            columns={perRow}
-            streams={streams.slice(0, perRow * rows)}
-            onShowMore={() => {
-              setRows(rows + 2);
-            }}
-          />
+          <Switch>
+            <Route path={"/:channel_id"}>Test</Route>
+            <Route path="/">
+              <StreamList
+                expanded={expanded}
+                columns={perRow}
+                streams={streams.slice(0, perRow * rows)}
+                onShowMore={() => {
+                  setRows(rows + 2);
+                }}
+              />
+            </Route>
+          </Switch>
         </Box>
       </div>
     </ThemeProvider>

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 const StreamList = (props) => {
   const styles = {
@@ -70,7 +71,13 @@ const StreamList = (props) => {
         sx={{ width: "auto" }}
       >
         {props.streams.map((stream, index) => (
-          <Card key={index} sx={{ maxWidth: 345 }} style={styles.card}>
+          <Card
+            component={RouterLink}
+            to={`/${stream.channelId}`}
+            key={index}
+            sx={{ maxWidth: 345 }}
+            style={styles.card}
+          >
             <CardActionArea>
               <CardMedia
                 component={"img"}

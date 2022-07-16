@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import logo from "./logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link as RouterLink } from "react-router-dom";
 
 const Header = (props) => {
   const styles = {
@@ -42,7 +43,8 @@ const Header = (props) => {
             <img src={logo} alt="Kumu Logo" style={styles.logo} />
           </Box>
           <Link
-            href="#"
+            component={RouterLink}
+            to="/"
             underline="none"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
@@ -96,16 +98,18 @@ const Header = (props) => {
           <List>
             <ListItem>
               <ListItemButton>
-                <ListItemText
-                  primary="Streams"
-                  primaryTypographyProps={{
-                    style: {
-                      fontSize: "20px",
-                      color: "#FB2961",
-                      fontWeight: "bold",
-                    },
-                  }}
-                />
+                <Link component={RouterLink} to="/">
+                  <ListItemText
+                    primary="Streams"
+                    primaryTypographyProps={{
+                      style: {
+                        fontSize: "20px",
+                        color: "#FB2961",
+                        fontWeight: "bold",
+                      },
+                    }}
+                  />
+                </Link>
               </ListItemButton>
             </ListItem>
           </List>
