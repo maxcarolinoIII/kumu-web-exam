@@ -41,8 +41,8 @@ const StreamPage = (props) => {
         alt="channel cover"
         style={styles.coverImage}
       />
-      <Box marginTop={"12px"} display={"flex"}>
-        <Box width={"10%"} sx={{ position: "relative" }}>
+      <Box marginTop={"12px"} display={"flex"} gap={"8px"}>
+        <Box width={"100px"} sx={{ position: "relative" }} maxHeight={"83px"}>
           <Avatar
             sx={{ height: "75px", width: "75px", border: "4px solid #FB2961" }}
           >
@@ -60,7 +60,7 @@ const StreamPage = (props) => {
             variant="h6"
             component="div"
             sx={{
-              fontSize: { xs: "13px", sm: "24px" },
+              fontSize: "24px",
               fontWeight: "bold",
               textAlign: "left",
               color: "white",
@@ -72,7 +72,7 @@ const StreamPage = (props) => {
             variant="body2"
             sx={{
               textAlign: "left",
-              fontSize: { xs: "12px", sm: "16px" },
+              fontSize: "16px",
               color: "white",
             }}
           >
