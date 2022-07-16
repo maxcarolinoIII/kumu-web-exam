@@ -97,19 +97,21 @@ const Header = (props) => {
           </Box>
           <List>
             <ListItem>
-              <ListItemButton>
-                <Link component={RouterLink} to="/">
-                  <ListItemText
-                    primary="Streams"
-                    primaryTypographyProps={{
-                      style: {
-                        fontSize: "20px",
-                        color: "#FB2961",
-                        fontWeight: "bold",
-                      },
-                    }}
-                  />
-                </Link>
+              <ListItemButton
+                component={RouterLink}
+                to="/"
+                onClick={() => setDrawerOpen(!drawerOpen)}
+              >
+                <ListItemText
+                  primary="Streams"
+                  primaryTypographyProps={{
+                    style: {
+                      fontSize: "20px",
+                      color: "#FB2961",
+                      fontWeight: "bold",
+                    },
+                  }}
+                />
               </ListItemButton>
             </ListItem>
           </List>
