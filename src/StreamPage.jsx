@@ -1,10 +1,45 @@
 import { useParams } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { Avatar, Chip, Typography } from "@mui/material";
 
 const StreamPage = (props) => {
+  const [channel, setChannel] = useState({
+    coverImageUrl: "",
+    username: "",
+    channelTitle: "",
+    userAvatar: "",
+  });
   let { channelId } = useParams();
+
+  useEffect(() => {
+    async function fetchChannel() {
+      const url = new URL("https://liveapi.kumu.live/live/regular-data");
+
+      const fetchOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "device-id": "desktop",
+        },
+        body: new URLSearchParams({
+          id: channelId,
+        }),
+      };
+
+      const response = await fetch(url, fetchOptions);
+      const { data } = await response.json();
+
+      setChannel({
+        coverImageUrl: data.cover_image,
+        username: data.liveuser.username,
+        channelTitle: data.title,
+        userAvatar: data.liveuser.avatar_small,
+      });
+    }
+
+    fetchChannel();
+  }, []);
 
   const styles = {
     coverImage: {
@@ -37,7 +72,7 @@ const StreamPage = (props) => {
       }}
     >
       <img
-        src="https://sm.ign.com/ign_ap/gallery/c/cyberpunk-/cyberpunk-2077-25-new-night-city-images_qd71.jpg"
+        src={channel.coverImageUrl}
         alt="channel cover"
         style={styles.coverImage}
       />
@@ -46,7 +81,7 @@ const StreamPage = (props) => {
           <Avatar
             sx={{ height: "75px", width: "75px", border: "4px solid #FB2961" }}
           >
-            <img src={"https://i.pravatar.cc/150?img=63"} alt="User Avatar" />
+            <img src={channel.userAvatar} alt="User Avatar" />
           </Avatar>
           <Chip
             label="LIVE"
@@ -66,7 +101,7 @@ const StreamPage = (props) => {
               color: "white",
             }}
           >
-            PBB Connect Daily
+            {channel.channelTitle}
           </Typography>
           <Typography
             variant="body2"
@@ -76,7 +111,7 @@ const StreamPage = (props) => {
               color: "white",
             }}
           >
-            @pbbconnect
+            @{channel.username}
           </Typography>
         </Box>
       </Box>

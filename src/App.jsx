@@ -44,7 +44,6 @@ const App = () => {
         [...data.data.lives].map((live) => ({
           title: live.title,
           username: `@${live.username}`,
-          avatar: live.avatar,
           image: live.cover_image,
           channelId: live.channel_id,
           viewers: live.audience_count,
